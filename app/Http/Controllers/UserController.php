@@ -4,57 +4,85 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function register(Request $request){
-
-        $request->validate([
-            'FullName'=> "required",
-            'Usuario'=> "required",
-            'email'=> "required|email|unique:users",
-            'password'=> "required",
-            'IdPermisos'=> "required",
-        ]);
-
-        $user = new User();
-        $user->FullName = $request->FullName;
-        $user->Usuario =  $request->Usuario;
-        $user->email =    $request->email;
-        $user->password = Hash::make($request->password);
-        $user->IdPermisos = $request->IdPermisos;
-        $user->save();
-
-        return response()->json(["mensaje " => "registrado correctamente" ]);        
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $user = User::all();
+        return response()->json(["Usuarios" => $user]);
     }
-    public function login (Request $request){
-        $request->validate([
-            "email" => "required|email",
-            "password" => "required"
-        ]);
 
-        $LoginUser = User::where("email",$request->email)->first();
-
-        if(!isset($LoginUser)){
-            return response()->json(["mensaje" =>"usuario no existe"]);
-        }
-        if(!(Hash::check($request->password,$LoginUser->Password))){
-            return response()->json(["mensaje" =>"Contraseña incorrecta"]);
-        }
-
-        $token = $LoginUser->createToken("token_Access")->plainTextToken;
-
-        return response()->json([            
-            "User" =>$LoginUser ,
-            "token" => $token,
-            "mensaje" =>"Login Correcto"
-        ]);        
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
-    public function Logout(){
-        Auth::user()->tokens()->delete();
-        return response()->json(["mensaje" =>"Se cerro correctamente"]);
-    }   
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
