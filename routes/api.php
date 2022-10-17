@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\UserAuthController;
@@ -48,3 +49,9 @@ Route::get("producto", [ProductoController::class, "index"]);
 Route::post("producto/create", [ProductoController::class, "store"]);
 Route::put("producto/update/{id}", [ProductoController::class, "update"]);
 Route::delete("producto/delete/{id}", [ProductoController::class, "destroy"]);
+
+///// CONTINUAR PROBAR
+Route::get("permisos", [PermisosController::class, "index"]);
+Route::post("permisos/create", [PermisosController::class, "store"]);
+Route::put("permisos/update/{id}", [PermisosController::class, "update"]);
+Route::delete("permisos/delete/{id}", [PermisosController::class, "destroy"]);
