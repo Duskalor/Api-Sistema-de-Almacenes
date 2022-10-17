@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -21,11 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post("login",[UserAuthController::class,"login"]);
-Route::post("register",[UserAuthController::class,"register"]);
+Route::post("login", [UserAuthController::class, "login"]);
+Route::post("register", [UserAuthController::class, "register"]);
 
 
 
-Route::get("user",[UserController::class,"index"]);
+Route::get("user", [UserController::class, "index"]);
+Route::put("user/update/{id}", [UserController::class, "update"]);
 
-    
+
+Route::get("cliente", [ClienteController::class, "index"]);
+Route::post("cliente/create", [ClienteController::class, "store"]);
+Route::put("cliente/update/{id}", [ClienteController::class, "update"]);
+Route::delete("cliente/delete/{id}", [ClienteController::class, "destroy"]);
