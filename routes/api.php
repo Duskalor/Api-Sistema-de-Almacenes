@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DatosController;
+use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
@@ -58,3 +59,9 @@ Route::delete("permisos/delete/{id}", [PermisosController::class, "destroy"]);
 //RUTA DATOS
 Route::get("Datos", [DatosController::class, "index"]);
 Route::put("Datos/update/{id}", [DatosController::class, "update"]);
+
+//RUTA ENTRADA
+Route::get("entrada", [EntradaController::class, "index"]);
+Route::post("entrada/create", [EntradaController::class, "store"]);
+Route::put("entrada/update/{id}", [EntradaController::class, "update"]);
+Route::delete("entrada/delete/{id}", [EntradaController::class, "destroy"]);
