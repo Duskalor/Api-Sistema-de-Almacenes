@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DatosController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
@@ -24,34 +25,36 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+// RUTA USUARIOS
 Route::post("login", [UserAuthController::class, "login"]);
 Route::post("register", [UserAuthController::class, "register"]);
-
-
-
 Route::get("user", [UserController::class, "index"]);
 Route::put("user/update/{id}", [UserController::class, "update"]);
 
-
+// RUTA CLIENTES
 Route::get("cliente", [ClienteController::class, "index"]);
 Route::post("cliente/create", [ClienteController::class, "store"]);
 Route::put("cliente/update/{id}", [ClienteController::class, "update"]);
 Route::delete("cliente/delete/{id}", [ClienteController::class, "destroy"]);
 
-
+//RUTA PROVEEDORES
 Route::get("proveedor", [ProveedorController::class, "index"]);
 Route::post("proveedor/create", [ProveedorController::class, "store"]);
 Route::put("proveedor/update/{id}", [ProveedorController::class, "update"]);
 Route::delete("proveedor/delete/{id}", [ProveedorController::class, "destroy"]);
 
+//RUTA PRODUCTOS
 Route::get("producto", [ProductoController::class, "index"]);
 Route::post("producto/create", [ProductoController::class, "store"]);
 Route::put("producto/update/{id}", [ProductoController::class, "update"]);
 Route::delete("producto/delete/{id}", [ProductoController::class, "destroy"]);
 
-///// CONTINUAR PROBAR
+//RUTA PERMISOS
 Route::get("permisos", [PermisosController::class, "index"]);
 Route::post("permisos/create", [PermisosController::class, "store"]);
 Route::put("permisos/update/{id}", [PermisosController::class, "update"]);
 Route::delete("permisos/delete/{id}", [PermisosController::class, "destroy"]);
+
+//RUTA DATOS
+Route::get("Datos", [DatosController::class, "index"]);
+Route::put("Datos/update/{id}", [DatosController::class, "update"]);

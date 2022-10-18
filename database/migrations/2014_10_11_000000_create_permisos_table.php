@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('permisos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string("Decripcion");
+            $table->string("Descripcion");
             $table->Integer("Salidas");
             $table->Integer("Entradas");
             $table->Integer("Productos");

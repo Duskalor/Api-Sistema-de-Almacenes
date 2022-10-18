@@ -17,7 +17,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string("RazonSocial");
-            $table->integer("Ruc");
+            $table->BigInteger("Ruc");
             $table->string("Direccion");
             $table->binary("Logo");
             $table->timestamps();

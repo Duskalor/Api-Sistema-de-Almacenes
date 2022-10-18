@@ -37,6 +37,7 @@ class PermisosController extends Controller
         $Permisos =  new Permisos;
         $Permisos->Descripcion = $request->Descripcion;
         $Permisos->Salidas = $request->Salidas;
+        $Permisos->Usuarios = $request->Usuarios;
         $Permisos->Entradas = $request->Entradas;
         $Permisos->Productos = $request->Productos;
         $Permisos->Clientes = $request->Clientes;
@@ -68,6 +69,7 @@ class PermisosController extends Controller
 
         $Permisos = Permisos::find($id);
         $Permisos->Salidas = $request->Salidas;
+        $Permisos->Usuarios = $request->Usuarios;
         $Permisos->Entradas = $request->Entradas;
         $Permisos->Productos = $request->Productos;
         $Permisos->Clientes = $request->Clientes;
