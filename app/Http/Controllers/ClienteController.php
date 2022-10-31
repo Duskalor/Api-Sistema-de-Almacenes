@@ -16,7 +16,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::all();
         return response()->json([
-            "clientes" => $cliente,
+            "ListaDeclientes" => $cliente,
             "mensaje" => " todos los clientes"
         ]);
     }
@@ -33,8 +33,9 @@ class ClienteController extends Controller
         $cliente->Dni = $request->Dni;
         $cliente->save();
 
-
+        $cliente = Cliente::all();
         return response()->json([
+            "ListaDeclientes" => $cliente,
             "mensaje" => "Cliente creado"
         ]);
     }
@@ -61,8 +62,12 @@ class ClienteController extends Controller
     {
         $cliente  = Cliente::find($id);
         $cliente->delete();
+        $cliente = Cliente::all();
         return response()->json(
-            ["mensaje" => "Cliente Eliminado"]
+            [
+                "ListaDeclientes" => $cliente,
+                "mensaje" => "Cliente Eliminado",
+            ]
         );
     }
 }

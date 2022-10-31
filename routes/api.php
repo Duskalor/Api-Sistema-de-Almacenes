@@ -57,8 +57,8 @@ Route::put("permisos/update/{id}", [PermisosController::class, "update"]);
 Route::delete("permisos/delete/{id}", [PermisosController::class, "destroy"]);
 
 //RUTA DATOS
-Route::get("Datos", [DatosController::class, "index"]);
-Route::put("Datos/update/{id}", [DatosController::class, "update"]);
+Route::get("datos", [DatosController::class, "index"]);
+Route::put("datos/update/{id}", [DatosController::class, "update"]);
 
 //RUTA ENTRADA
 Route::get("entrada", [EntradaController::class, "index"]);

@@ -15,6 +15,7 @@ class DatosController extends Controller
     public function index()
     {
         $Datos = Datos::all();
+        //dd($Datos);
         return response()->json(["Datos" => $Datos]);
     }
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("RazonSocial");
             $table->BigInteger("Ruc");
             $table->string("Direccion");
-            $table->binary("Logo");
+            //$table->binary("Logo");
             $table->timestamps();
         });
     }

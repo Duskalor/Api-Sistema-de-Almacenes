@@ -18,16 +18,16 @@ class EntradaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            "NumeroDocumento" => "required|unique:entradas",
-            "IdUsuario" => "required",
-            "IdProveedor" => "required",
-        ]);
+        // $request->validate([
+        //     "NumeroDocumento" => "required|unique:entradas",
+        //     "IdUsuario" => "required",
+        //     "IdProveedor" => "required",
+        // ]);
 
         $Entrada = new Entrada();
-        $Entrada->NumeroDocumento = $request->NumeroDocumento;
-        $Entrada->IdUsuario = $request->IdUsuario;
-        $Entrada->IdProveedor = $request->IdProveedor;
+        $Entrada->NumeroDocumento = $request[0]->NumeroDocumento;
+        $Entrada->IdUsuario = $request[0]->IdUsuario;
+        $Entrada->IdProveedor = $request[0]->IdProveedor;
         $Entrada->save();
 
 
