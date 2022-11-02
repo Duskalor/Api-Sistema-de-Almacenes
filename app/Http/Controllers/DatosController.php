@@ -26,7 +26,6 @@ class DatosController extends Controller
                 "RazonSocial" => "required",
                 "Ruc" => "required",
                 "Direccion" => "required",
-                "Logo" => "required",
             ]
         );
 
@@ -35,9 +34,9 @@ class DatosController extends Controller
         $Datos->RazonSocial = $request->RazonSocial;
         $Datos->Ruc = $request->Ruc;
         $Datos->Direccion = $request->Direccion;
-        $Datos->Logo = $request->Logo;
         $Datos->save();
+        $Datos = Datos::all();
 
-        return response()->json(["mensaje" => "Datos actualizados"]);
+        return response()->json(["Datos" => $Datos, "mensaje" => "Datos actualizados"]);
     }
 }

@@ -52,8 +52,11 @@ class ClienteController extends Controller
         $cliente->Dni = $request->Dni;
         $cliente->save();
 
+        $cliente = Cliente::all();
+
 
         return response()->json([
+            "ListaDeclientes" => $cliente,
             "mensaje" => "Cliente Actualizado"
         ]);
     }
