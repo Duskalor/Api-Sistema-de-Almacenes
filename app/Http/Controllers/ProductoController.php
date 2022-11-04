@@ -36,8 +36,9 @@ class ProductoController extends Controller
         $producto->Stock = $request->Stock;
         $producto->save();
 
-
+        $producto = Producto::all();
         return response()->json([
+            "ListaProductos" => $producto,
             "mensaje" => "producto creado"
         ]);
     }
@@ -62,8 +63,9 @@ class ProductoController extends Controller
         $producto->Stock = $request->Stock;
         $producto->save();
 
-
+        $producto = Producto::all();
         return response()->json([
+            "ListaProductos" => $producto,
             "mensaje" => "producto Actualizado"
         ]);
     }
@@ -72,8 +74,9 @@ class ProductoController extends Controller
     {
         $producto  = Producto::find($id);
         $producto->delete();
+        $producto = Producto::all();
         return response()->json(
-            ["mensaje" => "producto Eliminado"]
+            ["ListaProductos" => $producto, "mensaje" => "producto Eliminado"]
         );
     }
 }
