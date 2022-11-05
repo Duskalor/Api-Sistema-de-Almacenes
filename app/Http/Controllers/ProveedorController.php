@@ -11,7 +11,7 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::all();
         return response()->json([
-            "proveedor" => $proveedor,
+            "ListaDeproveedores" => $proveedor,
             "mensaje" => " todos los proveedor"
         ]);
     }
@@ -28,8 +28,9 @@ class ProveedorController extends Controller
         $proveedor->Ruc = $request->Ruc;
         $proveedor->save();
 
-
+        $proveedor = Proveedor::all();
         return response()->json([
+            "ListaDeproveedores" => $proveedor,
             "mensaje" => "Proveedor creado"
         ]);
     }
@@ -46,8 +47,9 @@ class ProveedorController extends Controller
         $proveedor->Ruc = $request->Ruc;
         $proveedor->save();
 
-
+        $proveedor = Proveedor::all();
         return response()->json([
+            "ListaDeproveedores" => $proveedor,
             "mensaje" => "Proveedor Actualizado"
         ]);
     }
@@ -56,8 +58,10 @@ class ProveedorController extends Controller
     {
         $Proveedor  = Proveedor::find($id);
         $Proveedor->delete();
+        $proveedor = Proveedor::all();
         return response()->json(
-            ["mensaje" => "Proveedor Eliminado"]
+
+            ["ListaDeproveedores" => $proveedor, "mensaje" => "Proveedor Eliminado"]
         );
     }
 }
