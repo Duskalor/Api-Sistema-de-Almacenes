@@ -46,8 +46,9 @@ class PermisosController extends Controller
         $Permisos->Configuracion = $request->Configuracion;
         $Permisos->save();
 
-
+        $Permisos = Permisos::all();
         return response()->json([
+            "Listapermisos" => $Permisos,
             "mensaje" => "Permiso creado"
         ]);
     }
@@ -65,7 +66,11 @@ class PermisosController extends Controller
                 "Configuracion" => "required"
             ]
         );
-
+        if ($id === 1 || $id === 2) {
+            return response()->json([
+                "mensaje" => "Permiso No se puede editar"
+            ]);
+        }
 
         $Permisos = Permisos::find($id);
         $Permisos->Salidas = $request->Salidas;
@@ -77,15 +82,23 @@ class PermisosController extends Controller
         $Permisos->Inventario = $request->Inventario;
         $Permisos->Configuracion = $request->Configuracion;
         $Permisos->save();
-
-        return response()->json(["mensaje" => "Permiso actualizado"]);
+        $Permisos = Permisos::all();
+        return response()->json(["Listapermisos" => $Permisos, "mensaje" => "Permiso actualizado"]);
     }
 
     public function destroy($id)
     {
+
+        if ($id === 1 || $id === 2) {
+            return response()->json([
+                "mensaje" => "Permiso No se puede eliminar"
+            ]);
+        }
         $Permisos = Permisos::find($id);
         $Permisos->delete();
+        $Permisos = Permisos::all();
         return response()->json([
+            "Listapermisos" => $Permisos,
             "mensaje" => "Permiso Eliminado Correctamente"
         ]);
     }
