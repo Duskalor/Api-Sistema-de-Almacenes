@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all();
-        return response()->json(["Usuarios" => $user]);
+        return response()->json(["ListaUsuarios" => $user]);
     }
 
     public function update(Request $request, $id)
@@ -26,28 +26,38 @@ class UserController extends Controller
                 "FullName" => "required",
                 "email" => "required|email",
                 "Usuario" => "required",
-                "password" => "required",
                 "IdPermisos" => "required"
             ]
         );
-
+        if ($id === 4) {
+            return response()->json([
+                "mensaje" => "Usuario No se puede eliminar"
+            ]);
+        }
 
         $user = User::find($id);
         $user->FullName = $request->FullName;
         $user->email = $request->email;
         $user->Usuario = $request->Usuario;
-        $user->password = Hash::make($request->password);
         $user->IdPermisos = $request->IdPermisos;
         $user->save();
 
-        return response()->json(["mensaje" => "Update correcto"]);
+        $user = User::all();
+        return response()->json(["ListaUsuarios" => $user, "mensaje" => "Update correcto"]);
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
+        if ($id === 4) {
+            return response()->json([
+                "mensaje" => "Usuario No se puede eliminar"
+            ]);
+        }
         $user = User::find($id);
         $user->delete();
+        $user = User::all();
         return response()->json([
+            "ListaUsuarios" => $user,
             "mensaje" => "Usuario Eliminado Correctamente"
         ]);
     }
