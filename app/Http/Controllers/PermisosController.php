@@ -16,7 +16,7 @@ class PermisosController extends Controller
     public function index()
     {
         $Permisos = Permisos::all();
-        return response()->json(["Permisos" => $Permisos]);
+        return response()->json(["Listapermisos" => $Permisos]);
     }
 
     public function store(Request $request)
