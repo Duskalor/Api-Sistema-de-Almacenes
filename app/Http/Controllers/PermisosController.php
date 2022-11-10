@@ -83,7 +83,7 @@ class PermisosController extends Controller
         $Permisos->Configuracion = $request->Configuracion;
         $Permisos->save();
         $Permisos = Permisos::all();
-        return response()->json(["Listapermisos" => $Permisos, "mensaje" => "Permiso actualizado"]);
+        return response()->json(["Listapermisos" => $Permisos, "mensaje" => "Permisos actualizados"]);
     }
 
     public function destroy($id)
