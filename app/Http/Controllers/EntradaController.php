@@ -11,27 +11,28 @@ class EntradaController extends Controller
     {
         $Entrada = Entrada::all();
         return response()->json([
-            "Entrada" => $Entrada,
+            "ListaEntradas" => $Entrada,
             "mensaje" => " todos las Entradas"
         ]);
     }
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     "NumeroDocumento" => "required|unique:entradas",
-        //     "IdUsuario" => "required",
-        //     "IdProveedor" => "required",
-        // ]);
+        $request->validate([
+            "NumeroDocumento" => "required|unique:entradas",
+            "IdUsuario" => "required",
+            "IdProveedor" => "required",
+        ]);
 
         $Entrada = new Entrada();
-        $Entrada->NumeroDocumento = $request[0]->NumeroDocumento;
-        $Entrada->IdUsuario = $request[0]->IdUsuario;
-        $Entrada->IdProveedor = $request[0]->IdProveedor;
+        $Entrada->NumeroDocumento = $request->NumeroDocumento;
+        $Entrada->IdUsuario = $request->IdUsuario;
+        $Entrada->IdProveedor = $request->IdProveedor;
         $Entrada->save();
-
+        $Entrada = Entrada::all();
 
         return response()->json([
+            "ListaEntradas" => $Entrada,
             "mensaje" => "Entrada creada"
         ]);
     }
@@ -48,8 +49,9 @@ class EntradaController extends Controller
         $Entrada->IdProveedor = $request->IdProveedor;
         $Entrada->save();
 
-
+        $Entrada = Entrada::all();
         return response()->json([
+            "ListaEntradas" => $Entrada,
             "mensaje" => "Entrada Actualizado"
         ]);
     }
@@ -58,8 +60,12 @@ class EntradaController extends Controller
     {
         $Entrada  = Entrada::find($id);
         $Entrada->delete();
+        $Entrada = Entrada::all();
         return response()->json(
-            ["mensaje" => "Entrada Eliminada"]
+            [
+                "ListaEntradas" => $Entrada,
+                "mensaje" => "Entrada Eliminada"
+            ]
         );
     }
 }

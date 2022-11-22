@@ -25,7 +25,7 @@ class ClienteController extends Controller
     {
         $request->validate([
             "FullName" => "required",
-            "Dni" => "required"
+            "Dni" => "required|unique:Clientes,Dni"
         ]);
 
         $cliente = new Cliente();

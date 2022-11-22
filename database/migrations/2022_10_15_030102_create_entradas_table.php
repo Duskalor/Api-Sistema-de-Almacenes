@@ -18,11 +18,11 @@ return new class extends Migration
             $table->id();
             $table->string("NumeroDocumento");
             $table->unsignedBigInteger("IdUsuario");
-            $table->unsignedBigInteger("IdProveedor");            
+            $table->unsignedBigInteger("IdProveedor");
             $table->integer("CantidadProductos")->nullable();
             $table->decimal('MontoTotal', 8, 2)->nullable();
-            $table->foreign('IdUsuario')->references('id')->on('users');
-            $table->foreign('IdProveedor')->references('id')->on('proveedors');
+            $table->foreign('IdUsuario')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
+            $table->foreign('IdProveedor')->references('id')->on('proveedors')->onUpdate('cascade')->onDelete('cascade');;
             $table->timestamps();
         });
     }

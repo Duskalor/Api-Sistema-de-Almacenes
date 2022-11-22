@@ -21,8 +21,8 @@ return new class extends Migration
             $table->decimal('PrecioCompra', 8, 2);
             $table->integer('Cantidad');
             $table->decimal('SubTotal', 8, 2);
-            $table->foreign('IdEntrada')->references('id')->on('entradas');
-            $table->foreign('IdProducto')->references('id')->on('productos');
+            $table->foreign('IdEntrada')->references('id')->on('entradas')->onUpdate('cascade')->onDelete('cascade');;
+            $table->foreign('IdProducto')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');;
             $table->timestamps();
         });
     }

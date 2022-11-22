@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('IdPermisos');
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('IdPermisos')->references('id')->on('permisos'); 
+            $table->foreign('IdPermisos')->references('id')->on('permisos')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
