@@ -26,8 +26,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get("logout", [UserAuthController::class, "Logout"]);
+
+    //RUTA PRODUCTOS
+    Route::get("producto", [ProductoController::class, "index"]);
+    Route::post("producto/create", [ProductoController::class, "store"]);
+    Route::put("producto/update/{id}", [ProductoController::class, "update"]);
+    Route::delete("producto/delete/{id}", [ProductoController::class, "destroy"]);
+});
+
 // RUTA USUARIOS
 Route::post("login", [UserAuthController::class, "login"]);
+
 Route::get("user", [UserController::class, "index"]);
 Route::post("user/create", [UserAuthController::class, "create"]);
 Route::put("user/update/{id}", [UserController::class, "update"]);
@@ -45,11 +56,7 @@ Route::post("proveedor/create", [ProveedorController::class, "store"]);
 Route::put("proveedor/update/{id}", [ProveedorController::class, "update"]);
 Route::delete("proveedor/delete/{id}", [ProveedorController::class, "destroy"]);
 
-//RUTA PRODUCTOS
-Route::get("producto", [ProductoController::class, "index"]);
-Route::post("producto/create", [ProductoController::class, "store"]);
-Route::put("producto/update/{id}", [ProductoController::class, "update"]);
-Route::delete("producto/delete/{id}", [ProductoController::class, "destroy"]);
+
 
 //RUTA PERMISOS
 Route::get("permisos", [PermisosController::class, "index"]);

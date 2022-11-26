@@ -34,11 +34,11 @@ class UserAuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            "email" => "required|email",
+            "Usuario" => "required",
             "password" => "required"
         ]);
 
-        $LoginUser = User::where("email", $request->email)->first();
+        $LoginUser = User::where("Usuario", $request->Usuario)->first();
 
         if (!isset($LoginUser)) {
             return response()->json(["mensaje" => "usuario no existe"]);
@@ -51,13 +51,17 @@ class UserAuthController extends Controller
 
         return response()->json([
             "User" => $LoginUser,
-            "token" => $token,
+            "userToken" => $token,
+            "success" => true,
             "mensaje" => "Login Correcto"
         ]);
     }
     public function Logout()
     {
         Auth::user()->tokens()->delete();
-        return response()->json(["mensaje" => "Se cerro correctamente"]);
+        return response()->json([
+            "success" => false,
+            "mensaje" => "Se cerro correctamente"
+        ]);
     }
 }
