@@ -29,7 +29,7 @@ class PermisosController extends Controller
                 "Productos" => "required",
                 "Clientes" => "required",
                 "Proveedores" => "required",
-                "Inventario" => "required",
+                "Permisos" => "required",
                 "Configuracion" => "required"
             ]
         );
@@ -42,7 +42,7 @@ class PermisosController extends Controller
         $Permisos->Productos = $request->Productos;
         $Permisos->Clientes = $request->Clientes;
         $Permisos->Proveedores = $request->Proveedores;
-        $Permisos->Inventario = $request->Inventario;
+        $Permisos->Permisos = $request->Permisos;
         $Permisos->Configuracion = $request->Configuracion;
         $Permisos->save();
 
@@ -62,7 +62,7 @@ class PermisosController extends Controller
                 "Productos" => "required",
                 "Clientes" => "required",
                 "Proveedores" => "required",
-                "Inventario" => "required",
+                "Permisos" => "required",
                 "Configuracion" => "required"
             ]
         );
@@ -79,7 +79,7 @@ class PermisosController extends Controller
         $Permisos->Productos = $request->Productos;
         $Permisos->Clientes = $request->Clientes;
         $Permisos->Proveedores = $request->Proveedores;
-        $Permisos->Inventario = $request->Inventario;
+        $Permisos->Permisos = $request->Permisos;
         $Permisos->Configuracion = $request->Configuracion;
         $Permisos->save();
         $Permisos = Permisos::all();

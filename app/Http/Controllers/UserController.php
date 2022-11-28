@@ -61,4 +61,19 @@ class UserController extends Controller
             "mensaje" => "Usuario Eliminado Correctamente"
         ]);
     }
+    public function details($id)
+    {
+        if ($id === 4) {
+            return response()->json([
+                "mensaje" => "Usuario No se puede eliminar"
+            ]);
+        }
+
+        $user = User::find($id);
+        return response()->json([
+            "User" => $user,
+            "success" => true,
+            "mensaje" => "Usuario"
+        ]);
+    }
 }

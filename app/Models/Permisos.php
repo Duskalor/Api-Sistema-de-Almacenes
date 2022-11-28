@@ -18,7 +18,7 @@ class Permisos extends Model
         "Productos",
         "Clientes",
         "Proveedores",
-        "Inventario",
+        "Permisos",
         "Configuracion"
     ];
 }

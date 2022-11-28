@@ -34,39 +34,41 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("producto/create", [ProductoController::class, "store"]);
     Route::put("producto/update/{id}", [ProductoController::class, "update"]);
     Route::delete("producto/delete/{id}", [ProductoController::class, "destroy"]);
+
+    // RUTA USUARIOS
+    Route::get("user", [UserController::class, "index"]);
+    Route::get("user/details/{id}", [UserController::class, "details"]);
+    Route::post("user/create", [UserAuthController::class, "create"]);
+    Route::put("user/update/{id}", [UserController::class, "update"]);
+    Route::delete("user/delete/{id}", [UserController::class, "delete"]);
+
+    // RUTA CLIENTES
+    Route::get("cliente", [ClienteController::class, "index"]);
+    Route::post("cliente/create", [ClienteController::class, "store"]);
+    Route::put("cliente/update/{id}", [ClienteController::class, "update"]);
+    Route::delete("cliente/delete/{id}", [ClienteController::class, "destroy"]);
+
+    //RUTA PROVEEDORES
+    Route::get("proveedor", [ProveedorController::class, "index"]);
+    Route::post("proveedor/create", [ProveedorController::class, "store"]);
+    Route::put("proveedor/update/{id}", [ProveedorController::class, "update"]);
+    Route::delete("proveedor/delete/{id}", [ProveedorController::class, "destroy"]);
+
+    //RUTA PERMISOS
+    Route::get("permisos", [PermisosController::class, "index"]);
+    Route::post("permisos/create", [PermisosController::class, "store"]);
+    Route::put("permisos/update/{id}", [PermisosController::class, "update"]);
+    Route::delete("permisos/delete/{id}", [PermisosController::class, "destroy"]);
+
+    //RUTA DATOS
+    Route::get("datos", [DatosController::class, "index"]);
+    Route::put("datos/update/{id}", [DatosController::class, "update"]);
 });
 
 // RUTA USUARIOS
 Route::post("login", [UserAuthController::class, "login"]);
 
-Route::get("user", [UserController::class, "index"]);
-Route::post("user/create", [UserAuthController::class, "create"]);
-Route::put("user/update/{id}", [UserController::class, "update"]);
-Route::delete("user/delete/{id}", [UserController::class, "delete"]);
 
-// RUTA CLIENTES
-Route::get("cliente", [ClienteController::class, "index"]);
-Route::post("cliente/create", [ClienteController::class, "store"]);
-Route::put("cliente/update/{id}", [ClienteController::class, "update"]);
-Route::delete("cliente/delete/{id}", [ClienteController::class, "destroy"]);
-
-//RUTA PROVEEDORES
-Route::get("proveedor", [ProveedorController::class, "index"]);
-Route::post("proveedor/create", [ProveedorController::class, "store"]);
-Route::put("proveedor/update/{id}", [ProveedorController::class, "update"]);
-Route::delete("proveedor/delete/{id}", [ProveedorController::class, "destroy"]);
-
-
-
-//RUTA PERMISOS
-Route::get("permisos", [PermisosController::class, "index"]);
-Route::post("permisos/create", [PermisosController::class, "store"]);
-Route::put("permisos/update/{id}", [PermisosController::class, "update"]);
-Route::delete("permisos/delete/{id}", [PermisosController::class, "destroy"]);
-
-//RUTA DATOS
-Route::get("datos", [DatosController::class, "index"]);
-Route::put("datos/update/{id}", [DatosController::class, "update"]);
 
 //RUTA ENTRADA
 Route::get("entrada", [EntradaController::class, "index"]);
