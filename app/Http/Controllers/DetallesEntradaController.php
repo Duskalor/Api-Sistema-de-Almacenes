@@ -12,4 +12,26 @@ class DetallesEntradaController extends Controller
         $detalleEntrada  = DetalleEntrada::all();
         return response()->json(["ListaDetalleEntrada" => $detalleEntrada]);
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            "IdEntrada" => "required",
+            "IdProducto" => "required",
+            "PrecioCompra" => "required",
+            "Cantidad" => "required",
+            "SubTotal" => "required",
+        ]);
+
+        $Entrada = new DetalleEntrada();
+        $Entrada->IdEntrada = $request->IdEntrada;
+        $Entrada->IdProducto = $request->IdProducto;
+        $Entrada->PrecioCompra = $request->PrecioCompra;
+        $Entrada->Cantidad = $request->Cantidad;
+        $Entrada->SubTotal = $request->SubTotal;
+        $Entrada->save();
+
+        $detalleEntrada = DetalleEntrada::all();
+        return response()->json(["ListaDetalleEntrada" => $detalleEntrada]);
+    }
 }

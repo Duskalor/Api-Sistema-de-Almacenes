@@ -22,17 +22,23 @@ class EntradaController extends Controller
             "NumeroDocumento" => "required|unique:entradas",
             "IdUsuario" => "required",
             "IdProveedor" => "required",
+            "CantidadProductos" => "required",
+            "MontoTotal" => "required",
         ]);
 
         $Entrada = new Entrada();
         $Entrada->NumeroDocumento = $request->NumeroDocumento;
         $Entrada->IdUsuario = $request->IdUsuario;
         $Entrada->IdProveedor = $request->IdProveedor;
+        $Entrada->CantidadProductos = $request->CantidadProductos;
+        $Entrada->MontoTotal = $request->MontoTotal;
         $Entrada->save();
-        $Entrada = Entrada::all();
+
+        $Entradas = Entrada::all();
 
         return response()->json([
-            "ListaEntradas" => $Entrada,
+            "Entrada" => $Entrada,
+            "ListaEntradas" => $Entradas,
             "mensaje" => "Entrada creada"
         ]);
     }
