@@ -48,11 +48,15 @@ class EntradaController extends Controller
         $request->validate([
             "IdUsuario" => "required",
             "IdProveedor" => "required",
+            "CantidadProductos" => "required",
+            "MontoTotal" => "required",
         ]);
 
         $Entrada = Entrada::find($id);
         $Entrada->IdUsuario = $request->IdUsuario;
         $Entrada->IdProveedor = $request->IdProveedor;
+        $Entrada->CantidadProductos = $request->CantidadProductos;
+        $Entrada->MontoTotal = $request->MontoTotal;
         $Entrada->save();
 
         $Entrada = Entrada::all();
