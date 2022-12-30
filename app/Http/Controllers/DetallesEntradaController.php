@@ -49,6 +49,7 @@ class DetallesEntradaController extends Controller
         $Entrada = DetalleEntrada::find($id);
         $Entrada->IdEntrada = $request->IdEntrada;
         $Entrada->IdProducto = $request->IdProducto;
+        $Entrada->PrecioCompra = $request->PrecioCompra;
         $Entrada->Cantidad = $request->Cantidad;
         $Entrada->SubTotal = $request->SubTotal;
         $Entrada->save();

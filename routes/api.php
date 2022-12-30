@@ -3,10 +3,12 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DetallesEntradaController;
+use App\Http\Controllers\DetallesSalidaController;
 use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\SalidaController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -82,3 +84,16 @@ Route::get("detalleEntrada", [DetallesEntradaController::class, "index"]);
 Route::post("detalleEntrada/create", [DetallesEntradaController::class, "store"]);
 Route::put("detalleEntrada/update/{id}", [DetallesEntradaController::class, "update"]);
 Route::delete("detalleEntrada/delete/{id}", [DetallesEntradaController::class, "destroy"]);
+
+
+//RUTA SALIDA
+Route::get("salida", [SalidaController::class, "index"]);
+Route::post("salida/create", [SalidaController::class, "store"]);
+Route::put("salida/update/{id}", [SalidaController::class, "update"]);
+Route::delete("salida/delete/{id}", [SalidaController::class, "destroy"]);
+
+//RUTA DETALLE SALIDA
+Route::get("detalleSalida", [DetallesSalidaController::class, "index"]);
+Route::post("detalleSalida/create", [DetallesSalidaController::class, "store"]);
+Route::put("detalleSalida/update/{id}", [DetallesSalidaController::class, "update"]);
+Route::delete("detalleSalida/delete/{id}", [DetallesSalidaController::class, "destroy"]);
