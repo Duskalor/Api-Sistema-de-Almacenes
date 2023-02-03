@@ -41,7 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // RUTA USUARIOS
     Route::get("user", [UserController::class, "index"]);
     Route::get("user/details/{id}", [UserController::class, "details"]);
-    Route::post("user/create", [UserAuthController::class, "create"]);
+
     Route::put("user/update/{id}", [UserController::class, "update"]);
     Route::delete("user/delete/{id}", [UserController::class, "delete"]);
 
@@ -70,6 +70,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // RUTA USUARIOS
 Route::post("login", [UserAuthController::class, "login"]);
+Route::post("user/create", [UserAuthController::class, "create"]);
 
 
 
