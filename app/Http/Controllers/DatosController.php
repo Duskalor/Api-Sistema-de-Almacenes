@@ -39,4 +39,10 @@ class DatosController extends Controller
 
         return response()->json(["Datos" => $Datos, "mensaje" => "Datos actualizados"]);
     }
+    public function report()
+    {
+        // $ListaDatos =  ["producto", "user", "cliente", "proveedor", "permisos", "entrada", "salida"];
+        $ListaDatos =  ["entrada", "salida"];
+        return response()->json(["ListaDatos" => $ListaDatos]);
+    }
 }

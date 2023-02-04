@@ -66,34 +66,35 @@ Route::middleware('auth:sanctum')->group(function () {
     //RUTA DATOS
     Route::get("datos", [DatosController::class, "index"]);
     Route::put("datos/update/{id}", [DatosController::class, "update"]);
+
+    //RUTA REPORT
+    Route::get("report", [DatosController::class, "report"]);
+
+    //RUTA ENTRADA
+    Route::get("entrada", [EntradaController::class, "index"]);
+    Route::post("entrada/create", [EntradaController::class, "store"]);
+    Route::put("entrada/update/{id}", [EntradaController::class, "update"]);
+    Route::delete("entrada/delete/{id}", [EntradaController::class, "destroy"]);
+
+    //RUTA DETALLE ENTRADA
+    Route::get("detalleEntrada", [DetallesEntradaController::class, "index"]);
+    Route::post("detalleEntrada/create", [DetallesEntradaController::class, "store"]);
+    Route::put("detalleEntrada/update/{id}", [DetallesEntradaController::class, "update"]);
+    Route::delete("detalleEntrada/delete/{id}", [DetallesEntradaController::class, "destroy"]);
+
+
+    //RUTA SALIDA
+    Route::get("salida", [SalidaController::class, "index"]);
+    Route::post("salida/create", [SalidaController::class, "store"]);
+    Route::put("salida/update/{id}", [SalidaController::class, "update"]);
+    Route::delete("salida/delete/{id}", [SalidaController::class, "destroy"]);
+
+    //RUTA DETALLE SALIDA
+    Route::get("detalleSalida", [DetallesSalidaController::class, "index"]);
+    Route::post("detalleSalida/create", [DetallesSalidaController::class, "store"]);
+    Route::put("detalleSalida/update/{id}", [DetallesSalidaController::class, "update"]);
+    Route::delete("detalleSalida/delete/{id}", [DetallesSalidaController::class, "destroy"]);
 });
 
 // RUTA USUARIOS
 Route::post("login", [UserAuthController::class, "login"]);
-
-
-
-//RUTA ENTRADA
-Route::get("entrada", [EntradaController::class, "index"]);
-Route::post("entrada/create", [EntradaController::class, "store"]);
-Route::put("entrada/update/{id}", [EntradaController::class, "update"]);
-Route::delete("entrada/delete/{id}", [EntradaController::class, "destroy"]);
-
-//RUTA DETALLE ENTRADA
-Route::get("detalleEntrada", [DetallesEntradaController::class, "index"]);
-Route::post("detalleEntrada/create", [DetallesEntradaController::class, "store"]);
-Route::put("detalleEntrada/update/{id}", [DetallesEntradaController::class, "update"]);
-Route::delete("detalleEntrada/delete/{id}", [DetallesEntradaController::class, "destroy"]);
-
-
-//RUTA SALIDA
-Route::get("salida", [SalidaController::class, "index"]);
-Route::post("salida/create", [SalidaController::class, "store"]);
-Route::put("salida/update/{id}", [SalidaController::class, "update"]);
-Route::delete("salida/delete/{id}", [SalidaController::class, "destroy"]);
-
-//RUTA DETALLE SALIDA
-Route::get("detalleSalida", [DetallesSalidaController::class, "index"]);
-Route::post("detalleSalida/create", [DetallesSalidaController::class, "store"]);
-Route::put("detalleSalida/update/{id}", [DetallesSalidaController::class, "update"]);
-Route::delete("detalleSalida/delete/{id}", [DetallesSalidaController::class, "destroy"]);
