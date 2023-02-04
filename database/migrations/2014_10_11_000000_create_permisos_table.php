@@ -22,7 +22,7 @@ return new class extends Migration
             $table->Integer("Productos");
             $table->Integer("Clientes");
             $table->Integer("Proveedores");
-            $table->Integer("Inventario");
+            $table->Integer("Permisos");
             $table->Integer("Usuarios");
             $table->Integer("Configuracion");
             $table->timestamps();
