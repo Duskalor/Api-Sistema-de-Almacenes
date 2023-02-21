@@ -31,7 +31,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
 });
+
+// RUTA USUARIOS/AUTCH
+Route::post("user/create", [UserAuthController::class, "create"]);
 Route::get("logout", [UserAuthController::class, "Logout"]);
+Route::post("login", [UserAuthController::class, "login"]);
 
 //RUTA PRODUCTOS
 Route::get("producto", [ProductoController::class, "index"]);
@@ -68,11 +72,6 @@ Route::delete("permisos/delete/{id}", [PermisosController::class, "destroy"]);
 Route::get("datos", [DatosController::class, "index"]);
 Route::put("datos/update/{id}", [DatosController::class, "update"]);
 
-// RUTA USUARIOS
-//Route::post("login", [UserAuthController::class, "login"]);
-
-
-
 //RUTA ENTRADA
 Route::get("entrada", [EntradaController::class, "index"]);
 Route::post("entrada/create", [EntradaController::class, "store"]);
@@ -97,7 +96,3 @@ Route::get("detalleSalida", [DetallesSalidaController::class, "index"]);
 Route::post("detalleSalida/create", [DetallesSalidaController::class, "store"]);
 Route::put("detalleSalida/update/{id}", [DetallesSalidaController::class, "update"]);
 Route::delete("detalleSalida/delete/{id}", [DetallesSalidaController::class, "destroy"]);
-
-
-// RUTA USUARIOS
-Route::post("login", [UserAuthController::class, "login"]);
