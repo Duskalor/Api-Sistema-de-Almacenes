@@ -19,12 +19,12 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "Codigo" => "required|unique:productos",
-            "Descripcion" => "required",
-            "Categoria" => "required",
+            "Codigo"       => "required|unique:productos",
+            "Descripcion"  => "required",
+            "Categoria"    => "required",
             "PrecioCompra" => "required",
-            "PrecioVenta" => "required",
-            "Stock" => "required"
+            "PrecioVenta"  => "required",
+            "Stock"        => "required"
         ]);
 
         $producto = new Producto();

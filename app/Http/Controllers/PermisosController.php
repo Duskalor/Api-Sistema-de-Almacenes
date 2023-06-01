@@ -16,6 +16,7 @@ class PermisosController extends Controller
     public function index()
     {
         $Permisos = Permisos::all();
+
         return response()->json(["Listapermisos" => $Permisos]);
     }
 
@@ -66,7 +67,8 @@ class PermisosController extends Controller
                 "Configuracion" => "required"
             ]
         );
-        if ($id === 1 || $id === 2) {
+        // if ($id === 1 || $id === 2) {
+        if ($id === 1) {
             return response()->json([
                 "mensaje" => "Permiso No se puede editar"
             ]);
@@ -74,6 +76,7 @@ class PermisosController extends Controller
 
         $Permisos = Permisos::find($id);
         $Permisos->Salidas = $request->Salidas;
+        $Permisos->Descripcion = $request->Descripcion;
         $Permisos->Usuarios = $request->Usuarios;
         $Permisos->Entradas = $request->Entradas;
         $Permisos->Productos = $request->Productos;
