@@ -31,10 +31,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
 });
+Route::get("logout", [UserAuthController::class, "Logout"]);
+
+
 
 // RUTA USUARIOS/AUTCH
 Route::post("user/create", [UserAuthController::class, "create"]);
-Route::get("logout", [UserAuthController::class, "Logout"]);
 Route::post("login", [UserAuthController::class, "login"]);
 
 //RUTA PRODUCTOS

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserAuthController extends Controller
@@ -58,7 +57,7 @@ class UserAuthController extends Controller
     }
     public function Logout()
     {
-        Auth::user()->tokens()->delete();
+        auth('sanctum')->user()->currentAccessToken()->delete();
         return response()->json([
             "success" => false,
             "mensaje" => "Se cerro correctamente"
