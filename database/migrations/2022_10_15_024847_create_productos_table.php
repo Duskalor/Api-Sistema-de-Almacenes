@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string("Codigo");
             $table->string("Descripcion");
+            $table->boolean("active");
             $table->string("Categoria");
             $table->decimal('PrecioCompra', 8, 2);
             $table->decimal('PrecioVenta', 8, 2);
