@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string("NumeroDocumento");
             $table->unsignedBigInteger("IdUsuario");
             $table->unsignedBigInteger("IdProveedor");
+            $table->string('razon_salida', 255)->nullable();
             $table->integer("CantidadProductos")->nullable();
-            $table->decimal('MontoTotal', 8, 2)->nullable();
             $table->foreign('IdUsuario')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('IdProveedor')->references('id')->on('proveedors')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

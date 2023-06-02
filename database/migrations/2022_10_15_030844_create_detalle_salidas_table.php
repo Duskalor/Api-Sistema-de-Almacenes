@@ -18,9 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("IdSalida");
             $table->unsignedBigInteger("IdProducto");
-            $table->decimal('PrecioVenta', 8, 2);
             $table->integer('Cantidad');
-            $table->decimal('SubTotal', 8, 2);
             $table->foreign('IdSalida')->references('id')->on('salidas')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('IdProducto')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');;
             $table->timestamps();

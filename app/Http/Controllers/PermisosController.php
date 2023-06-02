@@ -84,6 +84,7 @@ class PermisosController extends Controller
         $Permisos->Proveedores = $request->Proveedores;
         $Permisos->Permisos = $request->Permisos;
         $Permisos->Configuracion = $request->Configuracion;
+        $Permisos->Almacenes = $request->Almacenes;
         $Permisos->save();
         $Permisos = Permisos::all();
         return response()->json(["Listapermisos" => $Permisos, "mensaje" => "Permisos actualizados"]);

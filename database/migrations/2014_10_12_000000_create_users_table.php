@@ -21,9 +21,12 @@ return new class extends Migration
             $table->string('Usuario');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('Password');
+            $table->unsignedBigInteger('IdAlmacenes');
             $table->unsignedBigInteger('IdPermisos');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('IdAlmacenes')->references('id')->on('almacenes')->onUpdate('cascade')->onDelete('cascade');
+
             $table->foreign('IdPermisos')->references('id')->on('permisos')->onUpdate('cascade')->onDelete('cascade');
         });
     }

@@ -40,7 +40,7 @@ class UserAuthController extends Controller
         $LoginUser = User::where("Usuario", $request->Usuario)->first();
 
         if (!isset($LoginUser)) {
-            return response()->json(["mensaje" => "usuario no existe"]);
+            return response()->json(["mensaje" => "usuario o contraseña incorrecto", "success" => false]);
         }
         if (!(Hash::check($request->password, $LoginUser->Password))) {
             return response()->json(["mensaje" => "Contraseña incorrecta"]);

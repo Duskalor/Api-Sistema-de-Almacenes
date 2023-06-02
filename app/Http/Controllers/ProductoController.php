@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permisos;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -9,11 +10,22 @@ class ProductoController extends Controller
 {
     public function index()
     {
-        $producto = Producto::all();
-        return response()->json([
-            "ListaProductos" => $producto,
-            "mensaje" => " todos los productos"
-        ]);
+        $userCode =  auth('sanctum')->user()->IdPermisos;
+        if ($userCode == 1) {
+            $producto = Producto::all();
+            return response()->json([
+                "ListaProductos" => $producto,
+                "mensaje" => " todos los productos"
+            ]);
+        } else {
+            $producto = Producto::where("active", true)->get();
+            return response()->json(
+                [
+                    "ListaProductos" => $producto,
+                    "mensaje" => " todos los productos"
+                ]
+            );
+        }
     }
 
     public function store(Request $request)
@@ -22,17 +34,14 @@ class ProductoController extends Controller
             "Codigo"       => "required|unique:productos",
             "Descripcion"  => "required",
             "Categoria"    => "required",
-            "PrecioCompra" => "required",
-            "PrecioVenta"  => "required",
-            "Stock"        => "required"
+            "Stock"        => "required",
         ]);
 
         $producto = new Producto();
         $producto->Codigo = $request->Codigo;
         $producto->Descripcion = $request->Descripcion;
+        $producto->active = true;
         $producto->Categoria = $request->Categoria;
-        $producto->PrecioCompra = $request->PrecioCompra;
-        $producto->PrecioVenta = $request->PrecioVenta;
         $producto->Stock = $request->Stock;
         $producto->save();
 
@@ -49,8 +58,7 @@ class ProductoController extends Controller
 
             "Descripcion" => "required",
             "Categoria" => "required",
-            "PrecioCompra" => "required",
-            "PrecioVenta" => "required",
+            "active" => "required",
             "Stock" => "required"
         ]);
 
@@ -58,8 +66,7 @@ class ProductoController extends Controller
 
         $producto->Descripcion = $request->Descripcion;
         $producto->Categoria = $request->Categoria;
-        $producto->PrecioCompra = $request->PrecioCompra;
-        $producto->PrecioVenta = $request->PrecioVenta;
+        $producto->active = $request->active;
         $producto->Stock = $request->Stock;
         $producto->save();
 
@@ -73,7 +80,9 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto  = Producto::find($id);
-        $producto->delete();
+        $producto->active = false;
+        $producto->save();
+        // $producto->delete();
         $producto = Producto::all();
         return response()->json(
             ["ListaProductos" => $producto, "mensaje" => "producto Eliminado"]

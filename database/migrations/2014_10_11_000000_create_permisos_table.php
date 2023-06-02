@@ -17,14 +17,15 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string("Descripcion");
-            $table->Integer("Salidas");
-            $table->Integer("Entradas");
-            $table->Integer("Productos");
-            $table->Integer("Clientes");
-            $table->Integer("Proveedores");
-            $table->Integer("Permisos");
-            $table->Integer("Usuarios");
-            $table->Integer("Configuracion");
+            $table->boolean("Salidas");
+            $table->boolean("Entradas");
+            $table->boolean("Productos");
+            $table->boolean("Clientes");
+            $table->boolean("Proveedores");
+            $table->boolean("Permisos");
+            $table->boolean("Usuarios");
+            $table->boolean("Almacenes");
+            $table->boolean("Configuracion");
             $table->timestamps();
         });
     }
