@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("ubicacion");
+            $table->boolean("active");
             $table->string("Direccion");
             $table->timestamps();
         });

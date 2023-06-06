@@ -32,11 +32,19 @@ class DatosSeeder extends Seeder
             'name' => "Almacen Principal",
             'ubicacion' => "Cusco",
             'Direccion' => "Calle Cruz Verde",
+            'active' => true,
         ]);
         DB::table('almacenes')->insert([
             'name' => "Almacen Puerto",
             'ubicacion' => "Puerto Maldonado",
             'Direccion' => "Av Circunvalacion 350",
+            'active' => true,
+        ]);
+        DB::table('almacenes')->insert([
+            'name' => "test Almacen",
+            'ubicacion' => "test Almacen",
+            'Direccion' => "test Almacen",
+            'active' => false,
         ]);
 
         // permisos de administrador y almacenero

@@ -18,10 +18,11 @@ class ProductoController extends Controller
                 "mensaje" => " todos los productos"
             ]);
         } else {
-            $producto = Producto::where("active", true)->get();
+            $productos = Producto::where("active", true)->get();
+
             return response()->json(
                 [
-                    "ListaProductos" => $producto,
+                    "ListaProductos" => $productos,
                     "mensaje" => " todos los productos"
                 ]
             );
@@ -82,10 +83,24 @@ class ProductoController extends Controller
         $producto  = Producto::find($id);
         $producto->active = false;
         $producto->save();
-        // $producto->delete();
-        $producto = Producto::all();
-        return response()->json(
-            ["ListaProductos" => $producto, "mensaje" => "producto Eliminado"]
-        );
+
+
+        $userCode =  auth('sanctum')->user()->IdPermisos;
+        if ($userCode == 1) {
+            $producto = Producto::all();
+            return response()->json([
+                "ListaProductos" => $producto,
+                "mensaje" => "producto Eliminado"
+            ]);
+        } else {
+            $productos = Producto::where("active", true)->get();
+
+            return response()->json(
+                [
+                    "ListaProductos" => $productos,
+                    "mensaje" => " todos los productos"
+                ]
+            );
+        }
     }
 }

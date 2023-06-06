@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlmacenesController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DetallesEntradaController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\RefreshController;
 use App\Http\Controllers\SalidaController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
@@ -49,6 +51,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("cliente/create", [ClienteController::class, "store"]);
     Route::put("cliente/update/{id}", [ClienteController::class, "update"]);
     Route::delete("cliente/delete/{id}", [ClienteController::class, "destroy"]);
+
+    // RUTA ALMACENES
+    Route::get("almacenes", [AlmacenesController::class, "index"]);
+    Route::post("almacenes/create", [AlmacenesController::class, "store"]);
+    Route::put("almacenes/update/{id}", [AlmacenesController::class, "update"]);
+    Route::delete("almacenes/delete/{id}", [AlmacenesController::class, "destroy"]);
 
     //RUTA PROVEEDORES
     Route::get("proveedor", [ProveedorController::class, "index"]);
@@ -96,7 +104,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post("user/create", [UserAuthController::class, "create"]);
     Route::get("logout", [UserAuthController::class, "Logout"]);
 });
-
 
 
 

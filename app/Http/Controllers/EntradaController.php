@@ -23,7 +23,7 @@ class EntradaController extends Controller
             "IdUsuario" => "required",
             "IdProveedor" => "required",
             "CantidadProductos" => "required",
-            "MontoTotal" => "required",
+            // "MontoTotal" => "required",
         ]);
 
         $Entrada = new Entrada();
@@ -31,7 +31,7 @@ class EntradaController extends Controller
         $Entrada->IdUsuario = $request->IdUsuario;
         $Entrada->IdProveedor = $request->IdProveedor;
         $Entrada->CantidadProductos = $request->CantidadProductos;
-        $Entrada->MontoTotal = $request->MontoTotal;
+        // $Entrada->MontoTotal = $request->MontoTotal;
         $Entrada->save();
 
         $Entradas = Entrada::all();
