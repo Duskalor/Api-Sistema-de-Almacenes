@@ -11,6 +11,8 @@ class ProductoController extends Controller
     public function index()
     {
         $userCode =  auth('sanctum')->user()->IdPermisos;
+        $almacen =  auth('sanctum')->user()->IdAlmacenes;
+
         if ($userCode == 1) {
             $producto = Producto::all();
             return response()->json([
@@ -31,6 +33,9 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
+        $userCode =  auth('sanctum')->user()->IdPermisos;
+        $almacen =  auth('sanctum')->user()->IdAlmacenes;
+
         $request->validate([
             "Codigo"       => "required|unique:productos",
             "Descripcion"  => "required",
@@ -42,15 +47,27 @@ class ProductoController extends Controller
         $producto->Codigo = $request->Codigo;
         $producto->Descripcion = $request->Descripcion;
         $producto->active = true;
+        $producto->IdAlmacenes = $almacen;
         $producto->Categoria = $request->Categoria;
         $producto->Stock = $request->Stock;
         $producto->save();
 
-        $producto = Producto::all();
-        return response()->json([
-            "ListaProductos" => $producto,
-            "mensaje" => "producto creado"
-        ]);
+        if ($userCode == 1) {
+            $producto = Producto::all();
+            return response()->json([
+                "ListaProductos" => $producto,
+                "mensaje" => " todos los productos"
+            ]);
+        } else {
+            $productos = Producto::where("active", true)->get();
+
+            return response()->json(
+                [
+                    "ListaProductos" => $productos,
+                    "mensaje" => " todos los productos"
+                ]
+            );
+        }
     }
 
     public function update(Request $request, $id)

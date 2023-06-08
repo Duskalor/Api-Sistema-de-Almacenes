@@ -94,12 +94,23 @@ class DatosSeeder extends Seeder
             "IdAlmacenes" => 1
         ]);
 
+        // test
+        DB::table('users')->insert([
+            'FullName' => "test",
+            'Email' => "test@test.com",
+            'Usuario' => "test",
+            "Password" => Hash::make("123456"),
+            "IdPermisos" => 2,
+            "IdAlmacenes" => 2
+        ]);
+
         // productos de prueba
         DB::table('productos')->insert([
             'Codigo' => "PRO001",
             'Descripcion' => "Procesador Ryzen 3600X",
             'active' => true,
             "Categoria" => "Procesador",
+            "IdAlmacenes" => 2,
             "Stock" => 5
         ]);
         DB::table('productos')->insert([
@@ -107,6 +118,7 @@ class DatosSeeder extends Seeder
             'Descripcion' => "Mouse logitech G502",
             'active' => true,
             "Categoria" => "Mouse",
+            "IdAlmacenes" => 2,
             "Stock" => 10
         ]);
         DB::table('productos')->insert([
@@ -114,6 +126,7 @@ class DatosSeeder extends Seeder
             'Descripcion' => "Teclado Halion HA-K990",
             'active' => true,
             "Categoria" => "Teclado",
+            "IdAlmacenes" => 1,
             "Stock" => 5
         ]);
         DB::table('productos')->insert([
@@ -121,7 +134,8 @@ class DatosSeeder extends Seeder
             'Descripcion' => "Teclado logitech S301",
             'active' => false,
             "Categoria" => "Teclado",
-            "Stock" => 2
+            "IdAlmacenes" => 1,
+            "Stock" => 2,
         ]);
     }
 }

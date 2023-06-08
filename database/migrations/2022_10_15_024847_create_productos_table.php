@@ -21,6 +21,8 @@ return new class extends Migration
             $table->boolean("active");
             $table->string("Categoria");
             $table->integer('Stock');
+            $table->unsignedBigInteger('IdAlmacenes');
+            $table->foreign('IdAlmacenes')->references('id')->on('almacenes');
             $table->timestamps();
         });
     }

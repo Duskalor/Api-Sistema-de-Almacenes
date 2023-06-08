@@ -11,13 +11,15 @@
 
 Para poder obtener el Titulo del instituto Tupac Amaru del Cusco, se procedio a relizar una Api - de sistema de invetarios para la empresa Legion Tech .
 
+## comandos para iniciar la base de datos
+
+-   php artisan migrate:fresh
+-   php artisan db:seed --class=DatosSeeder
+-   php artisan db:seed --class=ProductosSeeder
+
 ## Comandos para iniciar la Api
 
-comandos para iniciar el sistema
-php artisan migrate:fresh
-php artisan db:seed --class=DatosSeeder
-
----
+-   php artisan serve
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
