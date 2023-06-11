@@ -26,7 +26,8 @@ class UserController extends Controller
                 "FullName" => "required",
                 "email" => "required|email",
                 "Usuario" => "required",
-                "IdPermisos" => "required"
+                "IdPermisos" => "required",
+                "IdAlmacenes" => "required"
             ]
         );
         if ($id === 4) {
@@ -40,6 +41,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->Usuario = $request->Usuario;
         $user->IdPermisos = $request->IdPermisos;
+        $user->IdAlmacenes = $request->IdAlmacenes;
         $user->save();
 
         $user = User::all();

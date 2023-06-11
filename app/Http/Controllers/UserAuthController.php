@@ -18,6 +18,7 @@ class UserAuthController extends Controller
             'password' => "required|confirmed|min:6",
             'password_confirmation' => 'required|same:password',
             'IdPermisos' => "required",
+            'IdAlmacenes' => "required",
         ]);
 
         $user = new User();
@@ -26,6 +27,7 @@ class UserAuthController extends Controller
         $user->email =    $request->email;
         $user->password = Hash::make($request->password);
         $user->IdPermisos = $request->IdPermisos;
+        $user->IdAlmacenes = $request->IdAlmacenes;
         $user->save();
         $user = User::all();
         return response()->json(["ListaUsuarios" => $user, "mensaje " => "registrado correctamente"]);

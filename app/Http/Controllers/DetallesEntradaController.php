@@ -18,17 +18,15 @@ class DetallesEntradaController extends Controller
         $request->validate([
             "IdEntrada" => "required",
             "IdProducto" => "required",
-            "PrecioCompra" => "required",
+            // "PrecioCompra" => "required",
             "Cantidad" => "required",
-            "SubTotal" => "required",
+            // "SubTotal" => "required",
         ]);
 
         $Entrada = new DetalleEntrada();
         $Entrada->IdEntrada = $request->IdEntrada;
         $Entrada->IdProducto = $request->IdProducto;
-        $Entrada->PrecioCompra = $request->PrecioCompra;
         $Entrada->Cantidad = $request->Cantidad;
-        $Entrada->SubTotal = $request->SubTotal;
         $Entrada->save();
 
         $detalleEntrada = DetalleEntrada::all();
