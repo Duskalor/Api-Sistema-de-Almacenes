@@ -42,7 +42,6 @@ class EntradaController extends Controller
         $Entrada = new Entrada();
         $Entrada->NumeroDocumento = $request->NumeroDocumento;
         $Entrada->IdUsuario = $request->IdUsuario;
-        // $Entrada->user = $request->user;
         $Entrada->active = true;
         $Entrada->CantidadProductos = $request->CantidadProductos;
         $Entrada->razonEntrada = $request->razonEntrada;
