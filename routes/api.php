@@ -1,9 +1,9 @@
 <?php
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header('Access-Control-Allow-Origin:  *');
-header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
+// header("Cache-Control: no-cache, must-revalidate");
+// header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+// header('Access-Control-Allow-Origin:  *');
+// header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+// header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
 use App\Http\Controllers\AlmacenesController;
 use App\Http\Controllers\ClienteController;
@@ -14,7 +14,6 @@ use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\RefreshController;
 use App\Http\Controllers\SalidaController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;

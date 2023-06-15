@@ -36,11 +36,12 @@ class EntradaController extends Controller
             "IdUsuario" => "required",
             "CantidadProductos" => "required",
             "razonEntrada" => "required",
-            // "user" => "required",
+            "IdAlmacenes" => "required",
         ]);
 
         $Entrada = new Entrada();
         $Entrada->NumeroDocumento = $request->NumeroDocumento;
+        $Entrada->IdAlmacenes = $request->IdAlmacenes;
         $Entrada->IdUsuario = $request->IdUsuario;
         $Entrada->active = true;
         $Entrada->CantidadProductos = $request->CantidadProductos;
@@ -58,13 +59,13 @@ class EntradaController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $request->validate([
             // "IdUsuario" => "required",
             "CantidadProductos" => "required",
-            "MontoTotal" => "required",
+            // "MontoTotal" => "required",
             "razonEntrada" => "required",
             "active" => "required",
-
         ]);
 
         $Entrada = Entrada::find($id);
@@ -72,7 +73,7 @@ class EntradaController extends Controller
         $Entrada->razonEntrada = $request->razonEntrada;
         $Entrada->active = $request->active;
         $Entrada->CantidadProductos = $request->CantidadProductos;
-        $Entrada->MontoTotal = $request->MontoTotal;
+        // $Entrada->MontoTotal = $request->MontoTotal;
         $Entrada->save();
 
         $Entrada = Entrada::all();

@@ -13,7 +13,7 @@ class UserAuthController extends Controller
 
         $request->validate([
             'FullName' => "required",
-            'Usuario' => "required",
+            'Usuario' => "required|unique:users",
             'email' => "required|email|unique:users",
             'password' => "required|confirmed|min:6",
             'password_confirmation' => 'required|same:password',

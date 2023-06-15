@@ -10,33 +10,46 @@ class SalidaController extends Controller
 {
     public function index()
     {
-        $Salida = Salida::all();
-        return response()->json([
-            "ListaSalidas" => $Salida,
-            "mensaje" => " todos las Salidas"
-        ]);
+
+        $userCode =  auth('sanctum')->user()->IdPermisos;
+        if ($userCode == 1) {
+            $Salida = Salida::all();
+            return response()->json([
+                "ListaSalidas" => $Salida,
+                "mensaje" => "todos las Salidas"
+            ]);
+        } else {
+            $Salidas = Salida::where("active", true)->get();
+
+            return response()->json(
+                [
+                    "ListaSalidas" => $Salidas,
+                    "mensaje" => " todos las Salidas"
+                ]
+            );
+        }
     }
 
     public function store(Request $request)
     {
         $request->validate([
             "NumeroDocumento" => "required|unique:Salidas",
-            "IdCliente" => "required",
             "IdUsuario" => "required",
             "CantidadProductos" => "required",
-            "MontoTotal" => "required",
+            "razonSalida" => "required",
+            "IdAlmacenes" => "required",
         ]);
 
         $Salida = new Salida();
         $Salida->NumeroDocumento = $request->NumeroDocumento;
-        $Salida->IdCliente = $request->IdCliente;
+        $Salida->IdAlmacenes = $request->IdAlmacenes;
         $Salida->IdUsuario = $request->IdUsuario;
+        $Salida->active = true;
         $Salida->CantidadProductos = $request->CantidadProductos;
-        $Salida->MontoTotal = $request->MontoTotal;
+        $Salida->razonSalida = $request->razonSalida;
         $Salida->save();
 
         $Salidas = Salida::all();
-
         return response()->json([
             "Salida" => $Salida,
             "ListaSalidas" => $Salidas,
@@ -47,17 +60,15 @@ class SalidaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "IdCliente" => "required",
             "IdUsuario" => "required",
             "CantidadProductos" => "required",
-            "MontoTotal" => "required",
+            "razonSalida" => "required",
         ]);
 
         $Salida = Salida::find($id);
-        $Salida->IdCliente = $request->IdCliente;
         $Salida->IdUsuario = $request->IdUsuario;
         $Salida->CantidadProductos = $request->CantidadProductos;
-        $Salida->MontoTotal = $request->MontoTotal;
+        $Salida->razonSalida = $request->razonSalida;
         $Salida->save();
 
         $Salida = Salida::all();

@@ -20,7 +20,7 @@ class ProductosSeeder extends Seeder
     {
         // Primer grupo de 5 productos
         DB::table('productos')->insert([
-            'Codigo' => "TEC001",
+            'Codigo' => "TEC003",
             'Descripcion' => "Teclado mecánico Corsair K70",
             'active' => true,
             "Categoria" => "Teclado",

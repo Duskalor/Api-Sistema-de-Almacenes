@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger("IdSalida");
             $table->unsignedBigInteger("IdProducto");
             $table->integer('Cantidad');
+
             $table->foreign('IdSalida')->references('id')->on('salidas')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('IdProducto')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');;
             $table->timestamps();

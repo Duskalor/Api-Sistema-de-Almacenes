@@ -10,7 +10,7 @@ class DetallesSalidaController extends Controller
     public function index()
     {
         $detalleSalida  = DetalleSalida::all();
-        return response()->json(["ListadetallesSalida" => $detalleSalida]);
+        return response()->json(["ListaDetalleSalida" => $detalleSalida]);
     }
 
     public function store(Request $request)
@@ -18,17 +18,13 @@ class DetallesSalidaController extends Controller
         $request->validate([
             "IdSalida" => "required",
             "IdProducto" => "required",
-            "PrecioVenta" => "required",
             "Cantidad" => "required",
-            "SubTotal" => "required",
         ]);
 
         $Salida = new DetalleSalida();
         $Salida->IdSalida = $request->IdSalida;
         $Salida->IdProducto = $request->IdProducto;
-        $Salida->PrecioVenta = $request->PrecioVenta;
         $Salida->Cantidad = $request->Cantidad;
-        $Salida->SubTotal = $request->SubTotal;
         $Salida->save();
 
         $DetalleSalida = DetalleSalida::all();
@@ -41,17 +37,13 @@ class DetallesSalidaController extends Controller
         $request->validate([
             "IdSalida" => "required",
             "IdProducto" => "required",
-            "PrecioVenta" => "required",
             "Cantidad" => "required",
-            "SubTotal" => "required",
         ]);
 
         $Salida = DetalleSalida::find($id);
         $Salida->IdSalida = $request->IdSalida;
         $Salida->IdProducto = $request->IdProducto;
-        $Salida->PrecioVenta = $request->PrecioVenta;
         $Salida->Cantidad = $request->Cantidad;
-        $Salida->SubTotal = $request->SubTotal;
         $Salida->save();
 
         $Salida = DetalleSalida::all();

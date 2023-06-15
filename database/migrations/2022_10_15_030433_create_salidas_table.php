@@ -17,12 +17,13 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string("NumeroDocumento");
-            $table->unsignedBigInteger("IdCliente");
             $table->unsignedBigInteger("IdUsuario");
-            $table->string('razon_salida', 255)->nullable();
+            $table->boolean("active");
+            $table->string('razonSalida', 255)->nullable();
             $table->integer("CantidadProductos")->nullable();
-            $table->foreign('IdCliente')->references('id')->on('clientes')->onUpdate('cascade')->onDelete('cascade');;
-            $table->foreign('IdUsuario')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
+            $table->unsignedBigInteger('IdAlmacenes');
+            $table->foreign('IdAlmacenes')->references('id')->on('almacenes')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('IdUsuario')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
