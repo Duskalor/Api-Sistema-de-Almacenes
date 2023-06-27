@@ -40,12 +40,12 @@ class DatosSeeder extends Seeder
             'Direccion' => "Av Circunvalacion 350",
             'active' => true,
         ]);
-        DB::table('almacenes')->insert([
-            'name' => "test Almacen",
-            'ubicacion' => "test Almacen",
-            'Direccion' => "test Almacen",
-            'active' => false,
-        ]);
+        // DB::table('almacenes')->insert([
+        //     'name' => "test Almacen",
+        //     'ubicacion' => "test Almacen",
+        //     'Direccion' => "test Almacen",
+        //     'active' => false,
+        // ]);
 
         // permisos de administrador y almacenero
         DB::table('permisos')->insert([
@@ -110,38 +110,145 @@ class DatosSeeder extends Seeder
             'Descripcion' => "Procesador Ryzen 3600X",
             'active' => true,
             "Categoria" => "Procesador",
-            "IdAlmacenes" => 2,
-            "Stock" => 5
+            // "IdAlmacenes" => 2,
+            "Stock" => 11
         ]);
         DB::table('productos')->insert([
             'Codigo' => "MOU001",
             'Descripcion' => "Mouse logitech G502",
             'active' => true,
             "Categoria" => "Mouse",
-            "IdAlmacenes" => 2,
-            "Stock" => 10
+            // "IdAlmacenes" => 2,
+            "Stock" => 11
         ]);
         DB::table('productos')->insert([
             'Codigo' => "TEC001",
             'Descripcion' => "Teclado Halion HA-K990",
             'active' => true,
             "Categoria" => "Teclado",
-            "IdAlmacenes" => 1,
-            "Stock" => 5
+            // "IdAlmacenes" => 1,
+            "Stock" => 22
         ]);
         DB::table('productos')->insert([
             'Codigo' => "TEC002",
             'Descripcion' => "Teclado logitech S301",
             'active' => false,
             "Categoria" => "Teclado",
-            "IdAlmacenes" => 1,
-            "Stock" => 2,
+            // "IdAlmacenes" => 1,
+            "Stock" => 6,
         ]);
 
 
+        //// ENTRADAS
+        /// 1
+        DB::table('entradas')->insert([
 
-        //// PRODUCTOS 
+            'NumeroDocumento' => "MIE002",
+            'IdUsuario' => 1,
+            'active' => true,
+            "razonEntrada" => "Ingreso Nuevo",
+            "CantidadProductos" => 18,
+            "IdAlmacenes" => 1,
+        ]);
+
+        // Detalle Entradas
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 1,
+            'IdProducto' => 1,
+            'cantidad' => 3,
+        ]);
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 1,
+            'IdProducto' => 2,
+            'cantidad' => 5,
+        ]);
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 1,
+            'IdProducto' => 3,
+            'cantidad' => 10,
+        ]);
+
+        /// 2 
+        DB::table('entradas')->insert([
+
+            'NumeroDocumento' => "MIE003",
+            'IdUsuario' => 1,
+            'active' => true,
+            "razonEntrada" => "Ingreso Nuevo",
+            "CantidadProductos" => 12,
+            "IdAlmacenes" => 1,
+        ]);
+
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 2,
+            'IdProducto' => 1,
+            'cantidad' => 2,
+        ]);
+
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 2,
+            'IdProducto' => 2,
+            'cantidad' => 3,
+        ]);
+
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 2,
+            'IdProducto' => 3,
+            'cantidad' => 1,
+        ]);
+
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 2,
+            'IdProducto' => 4,
+            'cantidad' => 6,
+        ]);
 
 
+        // ENTRADA 3
+        DB::table('entradas')->insert([
+            'NumeroDocumento' => "MIE004",
+            'IdUsuario' => 1,
+            'active' => true,
+            "razonEntrada" => "Ingreso de stock",
+            "CantidadProductos" => 8,
+            "IdAlmacenes" => 2,
+        ]);
+
+        // Detalle Entrada 3
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 3,
+            'IdProducto' => 2,
+            'cantidad' => 3,
+        ]);
+
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 3,
+            'IdProducto' => 3,
+            'cantidad' => 5,
+        ]);
+
+
+        // ENTRADA 4
+        DB::table('entradas')->insert([
+            'NumeroDocumento' => "MIE005",
+            'IdUsuario' => 2,
+            'active' => true,
+            "razonEntrada" => "Compra de productos",
+            "CantidadProductos" => 12,
+            "IdAlmacenes" => 1,
+        ]);
+
+        // Detalle Entrada 4
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 4,
+            'IdProducto' => 1,
+            'cantidad' => 6,
+        ]);
+
+        DB::table('detalle_entradas')->insert([
+            'IdEntrada' => 4,
+            'IdProducto' => 3,
+            'cantidad' => 6,
+        ]);
     }
 }

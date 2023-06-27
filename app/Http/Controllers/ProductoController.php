@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Permisos;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -119,5 +120,13 @@ class ProductoController extends Controller
                 ]
             );
         }
+    }
+
+    public function test()
+    {
+        $producto = DB::table("detalle_entradas")->join("productos", "detalle_entradas.IdEntrada", "=", "productos.id")->select('detalle_entradas.*', 'productos.Descripcion', 'productos.Codigo')->get();
+        return response()->json([
+            "products" => $producto,
+        ]);
     }
 }

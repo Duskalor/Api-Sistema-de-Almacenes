@@ -110,6 +110,6 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
-
+Route::get("producto/test", [ProductoController::class, "test"]);
 
 Route::post("login", [UserAuthController::class, "login"]);
