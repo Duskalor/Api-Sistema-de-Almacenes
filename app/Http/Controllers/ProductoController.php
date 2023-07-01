@@ -14,61 +14,58 @@ class ProductoController extends Controller
         $userCode =  auth('sanctum')->user()->IdPermisos;
         $almacen =  auth('sanctum')->user()->IdAlmacenes;
 
-        if ($userCode == 1) {
-            $producto = Producto::all();
-            return response()->json([
-                "ListaProductos" => $producto,
+        $productos = Producto::all();
+        return response()->json(
+            [
+                "ListaProductos" => $productos,
                 "mensaje" => " todos los productos"
-            ]);
-        } else {
-            $productos = Producto::where("active", true)->get();
+            ]
+        );
 
-            return response()->json(
-                [
-                    "ListaProductos" => $productos,
-                    "mensaje" => " todos los productos"
-                ]
-            );
-        }
+        // if ($userCode == 1) {
+        //     $producto = Producto::all();
+        //     return response()->json([
+        //         "ListaProductos" => $producto,
+        //         "mensaje" => " todos los productos"
+        //     ]);
+        // } else {
+        //     $productos = Producto::where("active", true)->get();
+
+        //     return response()->json(
+        //         [
+        //             "ListaProductos" => $productos,
+        //             "mensaje" => " todos los productos"
+        //         ]
+        //     );
+        // }
     }
 
     public function store(Request $request)
     {
-        $userCode =  auth('sanctum')->user()->IdPermisos;
-        $almacen =  auth('sanctum')->user()->IdAlmacenes;
+        // $userCode =  auth('sanctum')->user()->IdPermisos;
+        // $almacen =  auth('sanctum')->user()->IdAlmacenes;
 
         $request->validate([
             "Codigo"       => "required|unique:productos",
             "Descripcion"  => "required",
             "Categoria"    => "required",
-            "Stock"        => "required",
         ]);
 
         $producto = new Producto();
         $producto->Codigo = $request->Codigo;
         $producto->Descripcion = $request->Descripcion;
         $producto->active = true;
-        $producto->IdAlmacenes = $almacen;
         $producto->Categoria = $request->Categoria;
-        $producto->Stock = $request->Stock;
+        $producto->Stock = 0;
         $producto->save();
 
-        if ($userCode == 1) {
-            $producto = Producto::all();
-            return response()->json([
-                "ListaProductos" => $producto,
+        $productos = Producto::all();
+        return response()->json(
+            [
+                "ListaProductos" => $productos,
                 "mensaje" => " todos los productos"
-            ]);
-        } else {
-            $productos = Producto::where("active", true)->get();
-
-            return response()->json(
-                [
-                    "ListaProductos" => $productos,
-                    "mensaje" => " todos los productos"
-                ]
-            );
-        }
+            ]
+        );
     }
 
     public function update(Request $request, $id)
@@ -102,24 +99,13 @@ class ProductoController extends Controller
         $producto->active = false;
         $producto->save();
 
-
-        $userCode =  auth('sanctum')->user()->IdPermisos;
-        if ($userCode == 1) {
-            $producto = Producto::all();
-            return response()->json([
-                "ListaProductos" => $producto,
-                "mensaje" => "producto Eliminado"
-            ]);
-        } else {
-            $productos = Producto::where("active", true)->get();
-
-            return response()->json(
-                [
-                    "ListaProductos" => $productos,
-                    "mensaje" => " todos los productos"
-                ]
-            );
-        }
+        $productos = Producto::all();
+        return response()->json(
+            [
+                "ListaProductos" => $productos,
+                "mensaje" => " todos los productos"
+            ]
+        );
     }
 
     public function test()

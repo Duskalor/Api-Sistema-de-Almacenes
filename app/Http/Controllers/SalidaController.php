@@ -80,14 +80,37 @@ class SalidaController extends Controller
 
     public function destroy($id)
     {
+        // $Salida  = Salida::find($id);
+        // $Salida->delete();
+        // $Salida = Salida::all();
+        // return response()->json(
+        //     [
+        //         "ListaSalidas" => $Salida,
+        //         "mensaje" => "Salida Eliminada"
+        //     ]
+        // );
+
         $Salida  = Salida::find($id);
-        $Salida->delete();
-        $Salida = Salida::all();
-        return response()->json(
-            [
-                "ListaSalidas" => $Salida,
-                "mensaje" => "Salida Eliminada"
-            ]
-        );
+        $Salida->active = false;
+        $Salida->save();
+
+
+        $userCode =  auth('sanctum')->user()->IdPermisos;
+        if ($userCode == 1) {
+            $salidas = Salida::all();
+            return response()->json([
+                "ListaSalidas" => $salidas,
+                "mensaje" => "Salida Eliminado"
+            ]);
+        } else {
+            $salidas = salida::where("active", true)->get();
+
+            return response()->json(
+                [
+                    "ListaSalidas" => $salidas,
+                    "mensaje" => "Salida Eliminado"
+                ]
+            );
+        }
     }
 }

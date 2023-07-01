@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\DetalleSalida;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DetallesSalidaController extends Controller
 {
     public function index()
     {
+        $test = DB::table("detalle_salidas")->join("salidas", "detalle_salidas.IdSalida", "=", "salidas.id")->select("detalle_salidas.*", "salidas.IdAlmacenes")->get();
         $detalleSalida  = DetalleSalida::all();
-        return response()->json(["ListaDetalleSalida" => $detalleSalida]);
+        return response()->json(["ListaDetalleSalida" => $test]);
     }
 
     public function store(Request $request)
