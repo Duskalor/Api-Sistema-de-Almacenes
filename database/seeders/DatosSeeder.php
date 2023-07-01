@@ -21,9 +21,9 @@ class DatosSeeder extends Seeder
 
         // datos de la empresa
         DB::table('datos')->insert([
-            'RazonSocial' => "Legion Tech",
-            'Ruc' => 23567116591,
-            'Direccion' => "Calle Cruz Verde 380",
+            'RazonSocial' => "Legion Tech Cusco",
+            'Ruc' => 1073061514,
+            'Direccion' => "Av. la cultura 1006",
         ]);
 
         // almacen principal 
@@ -101,6 +101,14 @@ class DatosSeeder extends Seeder
             'Usuario' => "test",
             "Password" => Hash::make("123456"),
             "IdPermisos" => 2,
+            "IdAlmacenes" => 2
+        ]);
+        DB::table('users')->insert([
+            'FullName' => "laOchoa",
+            'Email' => "ochoa@ochoa.com",
+            'Usuario' => "ochoa",
+            "Password" => Hash::make("123456"),
+            "IdPermisos" => 1,
             "IdAlmacenes" => 2
         ]);
 

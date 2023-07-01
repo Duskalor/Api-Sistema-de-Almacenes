@@ -481,6 +481,52 @@ class ProductosSeeder extends Seeder
 
         // ... (otros grupos de 5 productos)
 
+        // SALIDAS
 
+        DB::table('salidas')->insert([
+
+            'NumeroDocumento' => "SAL001",
+            'IdUsuario' => 3,
+            'active' => true,
+            "razonSalida" => "Ingreso Nuevo TEST",
+            "CantidadProductos" => 7,
+            "IdAlmacenes" => 2,
+        ]);
+
+        // DETALLE SALIDAS
+        DB::table('detalle_salidas')->insert([
+            'IdSalida' => 1,
+            'IdProducto' => 3,
+            'cantidad' => 5,
+        ]);
+        DB::table('detalle_salidas')->insert([
+            'IdSalida' => 1,
+            'IdProducto' => 2,
+            'cantidad' => 2,
+        ]);
+
+
+
+        DB::table('salidas')->insert([
+
+            'NumeroDocumento' => "SAL002",
+            'IdUsuario' => 1,
+            'active' => true,
+            "razonSalida" => "Ingreso Nuevo TEST2",
+            "CantidadProductos" => 10,
+            "IdAlmacenes" => 1,
+        ]);
+
+        // DETALLE SALIDAS
+        DB::table('detalle_salidas')->insert([
+            'IdSalida' => 2,
+            'IdProducto' => 5,
+            'cantidad' => 5,
+        ]);
+        DB::table('detalle_salidas')->insert([
+            'IdSalida' => 2,
+            'IdProducto' => 7,
+            'cantidad' => 5,
+        ]);
     }
 }
