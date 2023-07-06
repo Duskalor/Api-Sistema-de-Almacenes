@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean("Salidas");
             $table->boolean("Entradas");
             $table->boolean("Productos");
-            $table->boolean("Clientes");
+            $table->boolean("Empleados");
             $table->boolean("Proveedores");
             $table->boolean("Permisos");
             $table->boolean("Usuarios");

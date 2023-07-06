@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('razonEntrada', 255)->nullable();
             $table->integer("CantidadProductos")->nullable();
             $table->unsignedBigInteger('IdAlmacenes');
+            $table->unsignedBigInteger('IdEmpleados');
+            $table->foreign('IdEmpleados')->references('id')->on('empleados')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('IdAlmacenes')->references('id')->on('almacenes')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('IdUsuario')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

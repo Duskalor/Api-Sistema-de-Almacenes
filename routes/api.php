@@ -1,15 +1,16 @@
 <?php
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header('Access-Control-Allow-Origin:  *');
-header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
+// header("Cache-Control: no-cache, must-revalidate");
+// header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+// header('Access-Control-Allow-Origin:  *');
+// header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+// header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
 use App\Http\Controllers\AlmacenesController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DetallesEntradaController;
 use App\Http\Controllers\DetallesSalidaController;
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\ProductoController;
@@ -51,10 +52,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete("user/delete/{id}", [UserController::class, "delete"]);
 
     // RUTA CLIENTES
-    Route::get("cliente", [ClienteController::class, "index"]);
-    Route::post("cliente/create", [ClienteController::class, "store"]);
-    Route::put("cliente/update/{id}", [ClienteController::class, "update"]);
-    Route::delete("cliente/delete/{id}", [ClienteController::class, "destroy"]);
+    Route::get("empleado", [EmpleadoController::class, "index"]);
+    Route::post("empleado/create", [EmpleadoController::class, "store"]);
+    Route::put("empleado/update/{id}", [EmpleadoController::class, "update"]);
+    Route::delete("empleado/delete/{id}", [EmpleadoController::class, "destroy"]);
 
     // RUTA ALMACENES
     Route::get("almacenes", [AlmacenesController::class, "index"]);

@@ -53,7 +53,7 @@ class DatosSeeder extends Seeder
             'Salidas' => true,
             'Entradas' => true,
             'Productos' => true,
-            'Clientes' => true,
+            'Empleados' => true,
             'Proveedores' => true,
             'Permisos' => true,
             'Usuarios' => true,
@@ -67,7 +67,7 @@ class DatosSeeder extends Seeder
             'Salidas' => true,
             'Entradas' => true,
             'Productos' => true,
-            'Clientes' => false,
+            'Empleados' => false,
             'Proveedores' => false,
             'Permisos' => false,
             'Usuarios' => false,
@@ -111,6 +111,18 @@ class DatosSeeder extends Seeder
             "IdPermisos" => 1,
             "IdAlmacenes" => 2
         ]);
+        DB::table('empleados')->insert([
+            'FullName' => "Luis Ochoa",
+            "Cargo" => "Vendedor",
+            "active" => 1
+        ]);
+        DB::table('empleados')->insert([
+            'FullName' => "Paul Cruz",
+            "Cargo" => "Vendedor",
+            "active" => 1
+        ]);
+
+
 
         // productos de prueba
         DB::table('productos')->insert([
@@ -156,6 +168,7 @@ class DatosSeeder extends Seeder
             'active' => true,
             "razonEntrada" => "Ingreso Nuevo",
             "CantidadProductos" => 18,
+            "IdEmpleados" => 1,
             "IdAlmacenes" => 1,
         ]);
 
@@ -182,6 +195,7 @@ class DatosSeeder extends Seeder
             'NumeroDocumento' => "MIE003",
             'IdUsuario' => 1,
             'active' => true,
+            "IdEmpleados" => 1,
             "razonEntrada" => "Ingreso Nuevo",
             "CantidadProductos" => 12,
             "IdAlmacenes" => 1,
@@ -216,6 +230,7 @@ class DatosSeeder extends Seeder
         DB::table('entradas')->insert([
             'NumeroDocumento' => "MIE004",
             'IdUsuario' => 1,
+            "IdEmpleados" => 2,
             'active' => true,
             "razonEntrada" => "Ingreso de stock",
             "CantidadProductos" => 8,
@@ -241,6 +256,7 @@ class DatosSeeder extends Seeder
             'NumeroDocumento' => "MIE005",
             'IdUsuario' => 2,
             'active' => true,
+            "IdEmpleados" => 2,
             "razonEntrada" => "Compra de productos",
             "CantidadProductos" => 12,
             "IdAlmacenes" => 1,
