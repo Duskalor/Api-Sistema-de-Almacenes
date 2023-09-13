@@ -38,11 +38,13 @@ class SalidaController extends Controller
             "CantidadProductos" => "required",
             "razonSalida" => "required",
             "IdAlmacenes" => "required",
+            "IdEmpleados" => "required",
         ]);
 
         $Salida = new Salida();
         $Salida->NumeroDocumento = $request->NumeroDocumento;
         $Salida->IdAlmacenes = $request->IdAlmacenes;
+        $Salida->IdEmpleados = $request->IdEmpleados;
         $Salida->IdUsuario = $request->IdUsuario;
         $Salida->active = true;
         $Salida->CantidadProductos = $request->CantidadProductos;

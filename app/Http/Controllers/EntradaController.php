@@ -37,11 +37,13 @@ class EntradaController extends Controller
             "CantidadProductos" => "required",
             "razonEntrada" => "required",
             "IdAlmacenes" => "required",
+            "IdEmpleados" => "required",
         ]);
 
         $Entrada = new Entrada();
         $Entrada->NumeroDocumento = $request->NumeroDocumento;
         $Entrada->IdAlmacenes = $request->IdAlmacenes;
+        $Entrada->IdEmpleados = $request->IdEmpleados;
         $Entrada->IdUsuario = $request->IdUsuario;
         $Entrada->active = true;
         $Entrada->CantidadProductos = $request->CantidadProductos;
