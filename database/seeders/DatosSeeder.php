@@ -122,6 +122,42 @@ class DatosSeeder extends Seeder
             "active" => 1
         ]);
 
+        // Categorias 
+
+        DB::table('categorias')->insert([
+            'categoria' => "Procesador"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Mouse"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Teclado"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Monitor"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Teléfono"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Audífonos"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Impresora"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Cámara"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Almacenamiento"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Altavoces"
+        ]);
+        DB::table('categorias')->insert([
+            'categoria' => "Proyector"
+        ]);
+
 
 
         // productos de prueba
@@ -129,7 +165,7 @@ class DatosSeeder extends Seeder
             'Codigo' => "PRO001",
             'Descripcion' => "Procesador Ryzen 3600X",
             'active' => true,
-            "Categoria" => "Procesador",
+            "Categoria" => 1,
             // "IdAlmacenes" => 2,
             "Stock" => 11
         ]);
@@ -137,7 +173,7 @@ class DatosSeeder extends Seeder
             'Codigo' => "MOU001",
             'Descripcion' => "Mouse logitech G502",
             'active' => true,
-            "Categoria" => "Mouse",
+            "Categoria" => 2,
             // "IdAlmacenes" => 2,
             "Stock" => 11
         ]);
@@ -145,7 +181,7 @@ class DatosSeeder extends Seeder
             'Codigo' => "TEC001",
             'Descripcion' => "Teclado Halion HA-K990",
             'active' => true,
-            "Categoria" => "Teclado",
+            "Categoria" => 3,
             // "IdAlmacenes" => 1,
             "Stock" => 22
         ]);
@@ -153,7 +189,7 @@ class DatosSeeder extends Seeder
             'Codigo' => "TEC002",
             'Descripcion' => "Teclado logitech S301",
             'active' => false,
-            "Categoria" => "Teclado",
+            "Categoria" => 3,
             // "IdAlmacenes" => 1,
             "Stock" => 6,
         ]);

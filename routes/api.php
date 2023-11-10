@@ -6,6 +6,7 @@
 // header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
 use App\Http\Controllers\AlmacenesController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DetallesEntradaController;
@@ -57,11 +58,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put("empleado/update/{id}", [EmpleadoController::class, "update"]);
     Route::delete("empleado/delete/{id}", [EmpleadoController::class, "destroy"]);
 
+    // RUTA CATEGORIA
+    Route::get("categoria", [CategoriaController::class, "index"]);
+    Route::post("categoria/create", [CategoriaController::class, "store"]);
+    Route::put("categoria/update/{id}", [CategoriaController::class, "update"]);
+    Route::delete("categoria/delete/{id}", [CategoriaController::class, "destroy"]);
+
     // RUTA ALMACENES
     Route::get("almacenes", [AlmacenesController::class, "index"]);
     Route::post("almacenes/create", [AlmacenesController::class, "store"]);
     Route::put("almacenes/update/{id}", [AlmacenesController::class, "update"]);
-    Route::delete("almacenes/delete/{id}", [AlmacenesController::class, "destroy"]);
+    Route::delete("almacenes/pnpdelete/{id}", [AlmacenesController::class, "destroy"]);
 
     //RUTA PROVEEDORES
     Route::get("proveedor", [ProveedorController::class, "index"]);
